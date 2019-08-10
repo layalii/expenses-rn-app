@@ -5,12 +5,18 @@ import {
   View,
   StyleSheet
 } from "react-native";
+import store from "../_store";
 
 export default class InitialScreen extends Component {
   componentDidMount = () => {
     AsyncStorage.getItem("expenses-app-user-token")
       .then(token => {
         if (token) {
+          // dispatch to store
+          store.dispatch({
+            type: "SET_TOKEN",
+            token
+          });
           // go to home
           this.props.navigation.navigate("Home");
         } else {

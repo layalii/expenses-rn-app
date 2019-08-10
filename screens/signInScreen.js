@@ -32,6 +32,7 @@ export default props => {
           const token = _data.data.token;
           AsyncStorage.setItem("expenses-app-user-token", token)
             .then(isTrue => {
+              // set token
               props.navigation.navigate("Home");
             })
             .catch(error => {

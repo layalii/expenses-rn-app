@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { Platform, StyleSheet, View, StatusBar } from "react-native";
 import Navigator from "./navigation";
-// import { AppLoading } from "expo";
+import { Provider } from "react-redux";
+import store from "./_store";
 
 export default () => (
-  <View style={styles.container}>
-    {Platform.OS === "ios" && <StatusBar barStyle="default" />}
-    <Navigator />
-  </View>
+  <Provider store={store}>
+    <View style={styles.container}>
+      {Platform.OS === "ios" && <StatusBar barStyle="default" />}
+      <Navigator />
+    </View>
+  </Provider>
 );
 
 // const X = () => {
